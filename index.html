@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ramadan Surprise 🌙</title>
+
+<style>
+body{
+margin:0;
+background:linear-gradient(#021018,#041f2f);
+overflow:hidden;
+font-family: 'Segoe UI', sans-serif;
+color:#f7e7a9;
+text-align:center;
+}
+
+/* stars */
+.star{
+position:absolute;
+width:2px;
+height:2px;
+background:white;
+animation:twinkle 2s infinite alternate;
+}
+@keyframes twinkle{
+from{opacity:.2}
+to{opacity:1}
+}
+
+/* moon */
+#moon{
+position:absolute;
+width:160px;
+height:160px;
+border-radius:50%;
+background:radial-gradient(circle at 30% 30%,#fff4b0,#d4af37);
+top:110%;
+left:50%;
+transform:translateX(-50%);
+box-shadow:0 0 60px gold;
+transition:top 4s ease;
+}
+
+/* mosque */
+#mosque{
+position:absolute;
+bottom:-300px;
+width:100%;
+height:250px;
+background:linear-gradient(to top,#063d2e,#0a5c44);
+clip-path:polygon(0% 100%,0% 60%,10% 60%,15% 40%,20% 60%,30% 60%,35% 40%,40% 60%,50% 60%,55% 40%,60% 60%,70% 60%,75% 40%,80% 60%,90% 60%,100% 60%,100% 100%);
+transition:bottom 3s ease 4s;
+}
+
+/* lanterns */
+.lantern{
+position:absolute;
+width:12px;
+height:18px;
+background:#d4af37;
+border-radius:4px;
+box-shadow:0 0 20px #ffd700;
+opacity:0;
+animation:float 4s infinite ease-in-out;
+}
+@keyframes float{
+0%{transform:translateY(0)}
+50%{transform:translateY(-20px)}
+100%{transform:translateY(0)}
+}
+
+/* people */
+.person{
+position:absolute;
+bottom:40px;
+width:20px;
+height:40px;
+background:#022e22;
+border-radius:10px;
+opacity:0;
+}
+
+/* food table */
+#iftar{
+position:absolute;
+bottom:-200px;
+left:50%;
+transform:translateX(-50%);
+width:300px;
+height:80px;
+background:#083c2d;
+border-radius:10px;
+transition:bottom 3s ease 7s;
+}
+.food{
+width:30px;
+height:30px;
+border-radius:50%;
+background:#d4af37;
+display:inline-block;
+margin:20px 8px;
+}
+
+/* message */
+#text{
+position:absolute;
+top:40%;
+width:100%;
+font-size:40px;
+opacity:0;
+transition:opacity 2s ease 9s;
+}
+</style>
+
+</head>
+
+<body>
+
+<div id="moon"></div>
+<div id="mosque"></div>
+<div id="iftar">
+<div class="food"></div>
+<div class="food"></div>
+<div class="food"></div>
+<div class="food"></div>
+</div>
+<div id="text">🌙 Ramadan Mubarak 🌙</div>
+
+<script>
+
+/* stars */
+for(let i=0;i<80;i++){
+let s=document.createElement("div");
+s.className="star";
+s.style.left=Math.random()*100+"%";
+s.style.top=Math.random()*100+"%";
+s.style.animationDuration=(Math.random()*3+1)+"s";
+document.body.appendChild(s);
+}
+
+/* lanterns */
+for(let i=0;i<6;i++){
+let l=document.createElement("div");
+l.className="lantern";
+l.style.left=(10+i*15)+"%";
+l.style.top="20%";
+document.body.appendChild(l);
+setTimeout(()=>l.style.opacity=1,4000);
+}
+
+/* people silhouettes */
+for(let i=0;i<5;i++){
+let p=document.createElement("div");
+p.className="person";
+p.style.left=(30+i*8)+"%";
+document.body.appendChild(p);
+setTimeout(()=>p.style.opacity=1,5500);
+}
+
+/* animation timeline */
+setTimeout(()=>document.getElementById("moon").style.top="15%",500);
+setTimeout(()=>document.getElementById("mosque").style.bottom="0",4000);
+setTimeout(()=>document.getElementById("iftar").style.bottom="40px",7000);
+setTimeout(()=>document.getElementById("text").style.opacity="1",9000);
+
+</script>
+
+</body>
+</html>
