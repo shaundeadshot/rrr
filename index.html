@@ -89,27 +89,16 @@
     .moon-circle {
       width: 80px; height: 80px;
       border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #fff8c0, #f5c842 50%, #d4960a);
+      background: radial-gradient(circle at 38% 32%, #ffffff 0%, #fffde0 30%, #fff5a0 60%, #f5e060 100%);
       box-shadow:
-        0 0 30px 10px rgba(245,200,66,0.55),
-        0 0 70px 30px rgba(245,200,66,0.25),
-        0 0 120px 60px rgba(245,200,66,0.1);
+        0 0 30px 10px rgba(255,245,180,0.6),
+        0 0 70px 30px rgba(245,220,100,0.3),
+        0 0 120px 60px rgba(245,200,66,0.12);
       animation: moonGlow 2s ease-in-out infinite alternate;
     }
     @keyframes moonGlow {
-      from { box-shadow: 0 0 30px 10px rgba(245,200,66,.55), 0 0 70px 30px rgba(245,200,66,.25), 0 0 120px 60px rgba(245,200,66,.1); }
-      to   { box-shadow: 0 0 50px 20px rgba(255,220,80,.75), 0 0 100px 50px rgba(255,220,80,.35), 0 0 180px 90px rgba(255,220,80,.15); }
-    }
-
-    /* Crescent cutout */
-    .moon-circle::after {
-      content: '';
-      position: absolute;
-      top: 8px; left: 14px;
-      width: 60px; height: 60px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 40% 40%, #0e0620, #0d0520);
-      opacity: 0.88;
+      from { box-shadow: 0 0 30px 10px rgba(255,245,180,.6), 0 0 70px 30px rgba(245,220,100,.3), 0 0 120px 60px rgba(245,200,66,.12); }
+      to   { box-shadow: 0 0 50px 20px rgba(255,250,200,.75), 0 0 100px 50px rgba(255,235,120,.4), 0 0 180px 90px rgba(245,200,66,.18); }
     }
 
     /* ── MOONBEAM ── */
@@ -188,18 +177,18 @@
     /* ── RAMADAN MESSAGE ── */
     #message-wrap {
       position: absolute;
-      top: 50%;
+      top: 28%;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translateX(-50%);
       text-align: center;
       pointer-events: none;
       opacity: 0;
       animation: messageReveal 1.2s cubic-bezier(0.22,1,0.36,1) 5.5s forwards;
     }
     @keyframes messageReveal {
-      0%   { opacity: 0; transform: translate(-50%,-50%) scale(0.4) rotate(-6deg); }
-      50%  { opacity: 1; transform: translate(-50%,-50%) scale(1.08) rotate(1deg); }
-      100% { opacity: 1; transform: translate(-50%,-50%) scale(1) rotate(0deg); }
+      0%   { opacity: 0; transform: translateX(-50%) scale(0.4) rotate(-6deg); }
+      50%  { opacity: 1; transform: translateX(-50%) scale(1.08) rotate(1deg); }
+      100% { opacity: 1; transform: translateX(-50%) scale(1) rotate(0deg); }
     }
 
     #message-wrap .arabic {
@@ -237,13 +226,13 @@
 
     #message-wrap .subtitle {
       font-family: 'Scheherazade New', serif;
-      font-size: clamp(16px, 3.5vw, 30px);
-      color: rgba(255,240,180,0.85);
-      letter-spacing: 6px;
-      text-transform: uppercase;
+      font-size: clamp(13px, 2.2vw, 20px);
+      color: rgba(255,240,180,0.75);
+      letter-spacing: 3px;
       display: block;
-      margin-top: 6px;
-      text-shadow: 0 0 14px rgba(255,200,60,0.5);
+      margin-top: 8px;
+      text-shadow: 0 0 10px rgba(255,200,60,0.4);
+      font-style: italic;
     }
 
     /* Gold ornament lines */
@@ -269,8 +258,9 @@
     /* glow panel behind message */
     #message-glow {
       position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%,-50%);
+      top: 28%;
+      left: 50%;
+      transform: translateX(-50%);
       width: 0; height: 0;
       border-radius: 50%;
       background: radial-gradient(ellipse, rgba(100,40,200,0.35) 0%, transparent 70%);
@@ -446,7 +436,7 @@
     <div class="ornament-diamond"></div>
     <div class="ornament-line"></div>
   </div>
-  <span class="subtitle">Blessed Month of Blessings</span>
+  <span class="subtitle">Assalam Walekum Dear 🌙</span>
 </div>
 
 <!-- People layer -->
@@ -482,52 +472,86 @@ for (let i = 0; i < 180; i++) {
 ──────────────────────────────────────── */
 const peopleLayer = document.getElementById('people-layer');
 
-// SVG person shapes (variations: robe, hijab, child, couple)
+// SVG person shapes: burqa women, kurta men, children — varied sizes
 const personTypes = [
-  // Man in thobe
-  (col) => `<svg viewBox="0 0 34 100" fill="none">
-    <circle cx="17" cy="12" r="8" fill="${col}"/>
-    <path d="M6 30 Q17 22 28 30 L31 90 H3 Z" fill="${col}"/>
-    <rect x="3" y="30" width="8" height="35" rx="3" fill="${col}" opacity="0.8"/>
-    <rect x="23" y="30" width="8" height="35" rx="3" fill="${col}" opacity="0.8"/>
-    <rect x="10" y="88" width="7" height="12" rx="2" fill="${col}" opacity="0.9"/>
-    <rect x="18" y="88" width="7" height="12" rx="2" fill="${col}" opacity="0.9"/>
+  // Man in long kurta
+  (col) => `<svg viewBox="0 0 34 105" fill="none">
+    <circle cx="17" cy="11" r="8" fill="#f0c8a0"/>
+    <rect x="10" y="4" width="14" height="10" rx="7" fill="${col}" opacity="0.6"/>
+    <path d="M7 32 Q17 22 27 32 L29 92 H5 Z" fill="${col}"/>
+    <line x1="17" y1="28" x2="17" y2="72" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
+    <rect x="3" y="32" width="7" height="32" rx="3" fill="${col}" opacity="0.85"/>
+    <rect x="24" y="32" width="7" height="32" rx="3" fill="${col}" opacity="0.85"/>
+    <rect x="9" y="90" width="7" height="13" rx="3" fill="${col}"/>
+    <rect x="18" y="90" width="7" height="13" rx="3" fill="${col}"/>
   </svg>`,
-  // Woman in abaya
-  (col) => `<svg viewBox="0 0 34 100" fill="none">
-    <circle cx="17" cy="11" r="7" fill="#f5c8a0"/>
-    <ellipse cx="17" cy="9" rx="9" ry="8" fill="${col}" opacity="0.9"/>
-    <path d="M4 28 Q17 18 30 28 L32 95 H2 Z" fill="${col}"/>
-    <rect x="11" y="93" width="6" height="7" rx="2" fill="${col}"/>
-    <rect x="18" y="93" width="6" height="7" rx="2" fill="${col}"/>
+  // Woman in full burqa (niqab style)
+  (col) => `<svg viewBox="0 0 34 105" fill="none">
+    <ellipse cx="17" cy="11" rx="11" ry="11" fill="${col}"/>
+    <rect x="10" y="4" width="14" height="10" rx="2" fill="#222" opacity="0.9"/>
+    <ellipse cx="17" cy="8" rx="9" ry="4" fill="${col}"/>
+    <path d="M3 30 Q17 18 31 30 L33 100 H1 Z" fill="${col}"/>
+    <rect x="9" y="98" width="7" height="7" rx="3" fill="${col}"/>
+    <rect x="18" y="98" width="7" height="7" rx="3" fill="${col}"/>
   </svg>`,
-  // Child
-  (col) => `<svg viewBox="0 0 28 80" fill="none">
-    <circle cx="14" cy="11" r="7" fill="#f5c8a0"/>
-    <path d="M5 25 Q14 18 23 25 L24 70 H4 Z" fill="${col}"/>
-    <rect x="4" y="25" width="7" height="28" rx="3" fill="${col}" opacity="0.8"/>
-    <rect x="17" y="25" width="7" height="28" rx="3" fill="${col}" opacity="0.8"/>
-    <rect x="7" y="68" width="5" height="10" rx="2" fill="${col}"/>
-    <rect x="14" y="68" width="5" height="10" rx="2" fill="${col}"/>
+  // Child in kurta (small)
+  (col) => `<svg viewBox="0 0 26 78" fill="none">
+    <circle cx="13" cy="10" r="7" fill="#f0c8a0"/>
+    <rect x="8" y="4" width="10" height="8" rx="5" fill="${col}" opacity="0.5"/>
+    <path d="M4 24 Q13 17 22 24 L23 68 H3 Z" fill="${col}"/>
+    <line x1="13" y1="21" x2="13" y2="55" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+    <rect x="2" y="24" width="5" height="24" rx="2.5" fill="${col}" opacity="0.8"/>
+    <rect x="19" y="24" width="5" height="24" rx="2.5" fill="${col}" opacity="0.8"/>
+    <rect x="6" y="66" width="5" height="10" rx="2" fill="${col}"/>
+    <rect x="13" y="66" width="5" height="10" rx="2" fill="${col}"/>
+  </svg>`,
+  // Woman in abaya + hijab
+  (col) => `<svg viewBox="0 0 34 105" fill="none">
+    <circle cx="17" cy="11" r="7" fill="#f0c8a0"/>
+    <ellipse cx="17" cy="8" rx="12" ry="10" fill="${col}" opacity="0.95"/>
+    <ellipse cx="17" cy="14" rx="10" ry="7" fill="${col}"/>
+    <path d="M3 30 Q17 20 31 30 L33 100 H1 Z" fill="${col}"/>
+    <rect x="9" y="98" width="7" height="7" rx="3" fill="${col}"/>
+    <rect x="18" y="98" width="7" height="7" rx="3" fill="${col}"/>
+  </svg>`,
+  // Tiny child burqa girl (smallest)
+  (col) => `<svg viewBox="0 0 22 66" fill="none">
+    <ellipse cx="11" cy="9" rx="8" ry="9" fill="${col}"/>
+    <rect x="6" y="4" width="10" height="7" rx="2" fill="#1a1a2e" opacity="0.85"/>
+    <path d="M2 24 Q11 15 20 24 L21 60 H1 Z" fill="${col}"/>
+    <rect x="5" y="58" width="5" height="8" rx="2" fill="${col}"/>
+    <rect x="12" y="58" width="5" height="8" rx="2" fill="${col}"/>
   </svg>`,
 ];
 
-const palette = ['#3d2b7a','#4a2070','#2a4a7a','#1a5a4a','#6a2040','#3a3a8a','#7a3a20','#2a6a3a'];
-const count = 26;
+const palette = ['#1a1a3e','#2c1654','#3b0a45','#0a3d2f','#1a2e5a','#3d1c02','#0d2b4a','#2a0a28','#1c3a1c','#4a1a1a'];
+const count = 28;
 const jumpDelay = 7.2;
+
+// Size buckets: tall adults, medium adults, small children
+const sizeBuckets = [
+  { min: 38, max: 46 }, // tall adult
+  { min: 28, max: 37 }, // medium adult
+  { min: 18, max: 27 }, // child
+];
 
 for (let i = 0; i < count; i++) {
   const wrap = document.createElement('div');
   wrap.className = 'person jump';
-  const type = personTypes[Math.floor(Math.random() * personTypes.length)];
+  const typeIdx = Math.floor(Math.random() * personTypes.length);
+  const type = personTypes[typeIdx];
   const color = palette[Math.floor(Math.random() * palette.length)];
   const delay = (0.4 + i * 0.09).toFixed(2);
-  const jitter = (jumpDelay + Math.random() * 0.5).toFixed(2);
-  const scale = 0.75 + Math.random() * 0.45;
+  const jitter = (jumpDelay + Math.random() * 0.6).toFixed(2);
+  // Children (types 2,4) get small bucket, others get tall or medium
+  const isChild = typeIdx === 2 || typeIdx === 4;
+  const bucket = isChild ? sizeBuckets[2] : (Math.random() > 0.4 ? sizeBuckets[0] : sizeBuckets[1]);
+  const w = Math.round(bucket.min + Math.random() * (bucket.max - bucket.min));
   wrap.style.cssText = `
     --pa:${delay}s; --jd:${jitter}s;
-    width:${Math.round(scale*34)}px;
+    width:${w}px;
     flex-shrink:0;
+    align-self:flex-end;
   `;
   wrap.innerHTML = type(color);
   peopleLayer.appendChild(wrap);
@@ -536,7 +560,32 @@ for (let i = 0; i < count; i++) {
 /* ────────────────────────────────────────
    FOOD PARTICLES
 ──────────────────────────────────────── */
-const foods = ['🌙','🥘','🍖','🍜','🥙','🫓','🍯','🍮','🥐','🍰','🌙','🫖','☕','🥗','🍛','🥧','🍡','🥜','🌰','🍇','🍊','🍑','🥮'];
+const foods = [
+  '🌙', // crescent
+  '🫖', // tea / atay
+  '🧃', // juice box
+  '🍵', // green tea
+  '☕', // kahwa
+  '🥛', // milk / lassi
+  '🍷', // rose sherbet (glass)
+  '🌰', // nuts / badam
+  '🫘', // lentils / dal
+  '🥘', // harira soup
+  '🍲', // stew
+  '🥙', // shawarma / wrap
+  '🫓', // flatbread / roti
+  '🍢', // skewer / kebab
+  '🍖', // meat / lamb
+  '🫑', // stuffed pepper
+  '🥗', // fattoush salad
+  '🍯', // honey
+  '🥐', // croissant / baklava shape
+  '🍮', // custard / qatayef
+  '🧆', // falafel
+  '🌙', // extra moons for Ramadan feel
+  '⭐', // star
+  '🕌', // mosque
+];
 const foodCount = 55;
 
 for (let i = 0; i < foodCount; i++) {
